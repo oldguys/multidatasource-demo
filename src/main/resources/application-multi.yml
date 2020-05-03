@@ -1,0 +1,27 @@
+test1:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test-db1?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+test2:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test-db2?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  test1:
+#    config-location: classpath:configs/myBatis-config.xml
+    mapper-locations: classpath:mappers/test1/**/*.xml
+    type-aliases-package: com.example.multidatasource.modules.db1.dao.entities
+    global-config:
+      banner: false
+  test2:
+#    config-location: classpath:configs/myBatis-config.xml
+    mapper-locations: classpath:mappers/test2/**/*.xml
+    type-aliases-package: com.example.multidatasource.modules.db2.dao.entities
+    global-config:
+      banner: false
+

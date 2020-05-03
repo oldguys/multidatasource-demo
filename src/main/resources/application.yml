@@ -1,0 +1,11 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: oldguy-multi-datasource
+  profiles:
+    active: multi
+logging:
+  level:
+    com.example.multidatasource.modules: debug
