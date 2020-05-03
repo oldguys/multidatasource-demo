@@ -1,10 +1,11 @@
 package com.example.multidatasource.modules.db2.services;
 
-import com.example.multidatasource.configurations.annonations.Test1Transactional;
+import com.example.multidatasource.configurations.annonations.Test2Transactional;
 import com.example.multidatasource.modules.db2.dao.entities.TestEntity2;
 import com.example.multidatasource.modules.db2.dao.jpas.TestEntity2Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -20,7 +21,8 @@ public class Test2Service {
     @Autowired
     private TestEntity2Mapper testEntity2Mapper;
 
-    @Test1Transactional
+//    @Test2Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void test() {
 
         TestEntity2 entity2 = new TestEntity2();

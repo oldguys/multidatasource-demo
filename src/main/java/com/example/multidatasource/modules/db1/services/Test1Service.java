@@ -24,7 +24,8 @@ public class Test1Service {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 
-    @Test1Transactional
+    //    @Test1Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void test() {
 
         TestEntity1 entity1 = new TestEntity1();
