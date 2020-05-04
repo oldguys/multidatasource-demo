@@ -8,6 +8,7 @@ import com.example.multidatasource.modules.db2.dao.entities.TestEntity2;
 import com.example.multidatasource.modules.db2.dao.jpas.TestEntity2Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -24,15 +25,20 @@ public class Test1Service {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 
+    /**
+     *  MANDATORY: 没有检查到事务，抛出异常
+     *
+     *  REQUIRES_NEW：
+     */
     //    @Test1Transactional
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public void test() {
 
         TestEntity1 entity1 = new TestEntity1();
         entity1.setCreateTime(new Date());
         entity1.setName("测试2");
 
-        testEntity1Mapper.insert(entity1);
+//        testEntity1Mapper.insert(entity1);
 //        throw new RuntimeException("测试");
     }
 }
